@@ -72,7 +72,7 @@ class BoxController extends Controller
 
         return response()->json([
             'success' => true,
-            'amount' => $this->getBoxCountByWidth($sheet, $box) * $this->getBoxCountByHeight($sheet, $box),
+            'amount' => $this->getBoxCountByWidth($sheet, $box) * $this->getBoxCountByLength($sheet, $box),
             'program' => $this->instructions,
         ]);
     }
@@ -130,7 +130,7 @@ class BoxController extends Controller
         $minLength = $this->getSheetMinLength($box);
 
         $boxCountByWidth = $this->getBoxCountByWidth($sheet, $box);
-        $boxCountByLength = $this->getBoxCountByHeight($sheet, $box);
+        $boxCountByLength = $this->getBoxCountByLength($sheet, $box);
 
         for ($i = 0; $i < $boxCountByWidth; $i++) {
             $startPoint->x = $minWidth * $i;
@@ -158,13 +158,13 @@ class BoxController extends Controller
     }
 
     /**
-     * getBoxCountByHeight
+     * getBoxCountByLength
      *
      * @param Sheet $sheet
      * @param Box $box
      * @return int
      */
-    protected function getBoxCountByHeight(Sheet $sheet, Box $box): int
+    protected function getBoxCountByLength(Sheet $sheet, Box $box): int
     {
         $minLength = $this->getSheetMinLength($box);
 
