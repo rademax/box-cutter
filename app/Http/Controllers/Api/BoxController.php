@@ -133,8 +133,8 @@ class BoxController extends Controller
         $boxCountByLength = $this->getBoxCountByLength($sheet, $box);
 
         for ($i = 0; $i < $boxCountByWidth; $i++) {
-            $startPoint->x = $minWidth * $i;
             for ($j = 0; $j < $boxCountByLength; $j++) {
+                $startPoint->x = $minWidth * $i;
                 $startPoint->y = $minLength * $j;
                 $this->cutBox($currentPoint, $sheet, $box);
             }
